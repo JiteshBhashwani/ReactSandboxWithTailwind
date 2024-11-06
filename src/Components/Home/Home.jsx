@@ -20,7 +20,7 @@ function FirstPage() {
           JITESH
         </h1>
         <p className="text-orange-400 font-bold tracking-wider">
-          Front-end Developer
+          Front-end Developer.
         </p>
       </div>
     </div>
