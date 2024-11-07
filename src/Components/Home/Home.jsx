@@ -22,6 +22,13 @@ function FirstPage() {
         <p className="text-orange-400 font-bold tracking-wider">
           Front-end Developer.
         </p>
+        <p className="text-gray-400 mt-4 max-w-md mx-auto">
+          Welcome to my React and Tailwind sandbox! This is a collection of
+          mini-projects and experimental components that I built while learning.
+          Note:{" "}
+          <strong className="text-orange-400">This is not my portfolio</strong>,
+          but a showcase of what I’ve explored and practiced.
+        </p>
       </div>
     </div>
   );
