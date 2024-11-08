@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CheckCircle,
   Copy,
@@ -12,10 +12,19 @@ import {
 
 function TextUtils() {
   const [inputText, setInputText] = useState("");
+  const [characterCount, setCharacterCount] = useState(0);
+  const [wordCount, setWordCount] = useState(0);
+
+  useEffect(() => {
+    let words = inputText.split(" ").filter((word) => word.length);
+    setCharacterCount(words.join("").length);
+    setWordCount(words.length);
+    return () => {};
+  }, [inputText]);
 
   // Reusable button style class
   const buttonClass =
-    "cursor-pointer bg-stone-100 text-stone-950 hover:bg-stone-300 px-4 rounded-sm flex items-center";
+    "cursor-pointer bg-stone-100 text-stone-950 hover:bg-stone-300 px-4 rounded-sm flex items-center justify-center text-sm p-2";
 
   const handleClear = () => {
     setInputText("");
@@ -73,22 +82,29 @@ function TextUtils() {
       className="h-screen flex flex-col items-center justify-center text-white "
     >
       <div className="bg-stone-100/5 p-10 rounded-lg">
-        <label htmlFor="inputText" className="mb-2">
+        <label htmlFor="inputText" className="text-3xl block text-center">
           TextUtils
         </label>
         <br />
-        <input
-          type="text"
+        <textarea
           name="inputText"
           id="inputText"
-          className="bg-transparent border border-gray-400 text-wrap w-full mb-4 px-2 rounded-sm h-8"
-          placeholder="Enter Text To MOD"
           value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-        />
-
+          placeholder="Enter text to modify..."
+          className="bg-transparent border-2 border-gray-300 w-full px-1 text-sm"
+          onChange={(e) => {
+            setInputText(e.target.value);
+          }}
+        ></textarea>
+        <div>
+          <p className="text-sm pb-2 text-center">
+            {" "}
+            Characters: <span>{characterCount}</span> | Words:{" "}
+            <span>{wordCount}</span>
+          </p>
+        </div>
         {/* Action Buttons */}
-        <div className="grid grid-cols-4 gap-2 mb-4">
+        <div className="grid grid-cols-2 gap-2 mb-2">
           <button className={buttonClass} onClick={handleCut}>
             <Scissors className="h-4" /> Cut
           </button>
