@@ -5,6 +5,7 @@ import {
   PasswordGenerator,
   CurrencyExchange,
   TextUtils,
+  CardWithDarkMode,
 } from "./Components";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Home />
         <Counter />
         <BGColorChanger />
+        <CardWithDarkMode />
         <TextUtils />
         <PasswordGenerator />
         <CurrencyExchange />
